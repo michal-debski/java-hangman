@@ -8,6 +8,7 @@ public class Generator {
             for (int i = 0; i < stringLength; i++) {
                 System.out.print("_");
             }
+            System.out.println("\n\n");
         }
     }
 
