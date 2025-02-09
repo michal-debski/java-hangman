@@ -11,10 +11,16 @@ import java.util.Random;
 
 public class RandomWordLoader {
 
-    public String getRandomWordFromList() throws URISyntaxException {
+    public String getRandomWordFromList() {
         RandomWordLoader app = new RandomWordLoader();
         String fileName = "slowa.txt";
-        File file = app.getFileFromResource(fileName);
+
+        File file;
+        try {
+            file = app.getFileFromResource(fileName);
+        } catch (URISyntaxException e) {
+            throw new RuntimeException("File with name: " + fileName + " not found");
+        }
         List<String> listFromFile = getListFromFile(file);
 
         Random random = new Random();
