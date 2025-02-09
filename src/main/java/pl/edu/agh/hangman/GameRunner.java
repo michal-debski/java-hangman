@@ -12,6 +12,7 @@ public class GameRunner {
         System.out.println("If you want to start a game type: START");
         String start = scanner.nextLine();
         if (start.equals("START")) {
+            String next = scanner.nextLine();
             RandomWordLoader wordLoader = new RandomWordLoader();
             String randomWordFromList = wordLoader.getRandomWordFromList();
 
