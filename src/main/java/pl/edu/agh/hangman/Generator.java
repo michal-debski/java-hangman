@@ -7,23 +7,23 @@ public class Generator {
 ////        System.out.println(g.letterReplace("abc", 'b'));
 //    }
 
-    public void underscoreGenerate(String s) {
+    public String underscoreGenerate(String s) {
+        StringBuilder sb = new StringBuilder();
         if (!s.isEmpty()) {
             int stringLength = s.length();
-            for (int i = 0; i < stringLength; i++) {
-                System.out.print("_");
-            }
+            sb.append("_".repeat(stringLength));
         }
         System.out.println("\n");
+    return sb.toString();
     }
 
-    public String letterReplace(String s, Character character) {
+    public String letterReplace(String s, String s2, Character character) {
         StringBuilder sb = new StringBuilder();
 
         String s1 = String.valueOf(character);
-        if (!s.isEmpty() && s.contains(s1)) {
+        if (!s2.isEmpty() && s2.contains(s1)) {
             for (int i = 0; i < s.length(); i++) {
-                if (s.charAt(i) == character) {
+                if (s2.charAt(i) == character) {
                     sb.append(s);
                     sb.setCharAt(i, character);
                 }
