@@ -32,7 +32,7 @@ public class GameRunner {
 
             Generator generator = new Generator();
             String s = generator.underscoreGenerate(randomWordFromList);
-            int counter = 0;
+            int counter = -1;
             List<Character> characterList = new ArrayList<>();
             String[] hangmanPics = Hangman.getHangmanPics();
             System.out.println(hangmanPics[0]);
@@ -42,7 +42,8 @@ public class GameRunner {
                     String providedLetter = scanner.nextLine();
                     char letter = providedLetter.toCharArray()[0];
                     if (LetterChecker.isLetterInWord(randomWordFromList, letter)) {
-                        System.out.println(generator.letterReplace(s, randomWordFromList, letter));
+                        s = generator.letterReplace(s, randomWordFromList, letter);
+                        System.out.println(s);
                         characterList.add(letter);
                     } else {
                         counter++;
