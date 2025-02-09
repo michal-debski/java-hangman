@@ -1,5 +1,7 @@
 package pl.edu.agh.hangman;
 
+import java.util.List;
+
 public class LetterChecker {
 
     public static boolean isLetterInWord(String word, char letter) {
@@ -14,8 +16,7 @@ public class LetterChecker {
         }
     }
 
-    public static boolean isWordCompleted() {
-
-        return false;
+    public static boolean isWordCompleted(List<Character> list, String input) {
+        return list.size() == input.length();
     }
 }
