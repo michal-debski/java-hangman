@@ -1,6 +1,11 @@
 package pl.edu.agh.hangman;
 
 public class Generator {
+//    public static void main(String[] args) {
+//        Generator g = new Generator();
+//        System.out.println(g.letterReplace("abc", 'a'));
+////        System.out.println(g.letterReplace("abc", 'b'));
+//    }
 
     public void underscoreGenerate(String s) {
         if (!s.isEmpty()) {
@@ -8,29 +13,22 @@ public class Generator {
             for (int i = 0; i < stringLength; i++) {
                 System.out.print("_");
             }
-            System.out.println("\n\n");
         }
         System.out.println("\n");
     }
 
-    public String replaceUnserscoreWithLetter(String s, Character character) {
-        String replacedString = s.replaceAll("[A-Za-z]", "_");
-        s = replacedString.replace("*", character.toString());
+    public String letterReplace(String s, Character character) {
+        StringBuilder sb = new StringBuilder();
 
-        return s;
-    }
-
-    public String letterGenerate(String s, Character character) {
         String s1 = String.valueOf(character);
         if (!s.isEmpty() && s.contains(s1)) {
             for (int i = 0; i < s.length(); i++) {
                 if (s.charAt(i) == character) {
-                    s = s.replace(String.valueOf(character), "*");
-                    s = replaceUnserscoreWithLetter(s, character);
+                    sb.append(s);
+                    sb.setCharAt(i, character);
                 }
             }
-            System.out.println(s);
-            return s;
+            return String.valueOf(sb);
         }
         throw new RuntimeException("Word must have at least one letter");
     }

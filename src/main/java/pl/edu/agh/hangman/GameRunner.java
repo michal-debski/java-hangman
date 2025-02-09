@@ -42,8 +42,7 @@ public class GameRunner {
                     String providedLetter = scanner.nextLine();
                     char letter = providedLetter.toCharArray()[0];
                     if (LetterChecker.isLetterInWord(randomWordFromList, letter)) {
-                        System.out.println(generator.letterGenerate(randomWordFromList, letter));
-
+                        System.out.println(generator.letterReplace(randomWordFromList, letter));
                         characterList.add(letter);
                     } else {
                         counter++;
