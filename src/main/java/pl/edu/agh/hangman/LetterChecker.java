@@ -2,7 +2,7 @@ package pl.edu.agh.hangman;
 
 public class LetterChecker {
 
-    public boolean isLetterInWord(String word, char letter) {
+    public static boolean isLetterInWord(String word, char letter) {
         if (word != null || !word.isEmpty()) {
             if (word.contains(String.valueOf(letter))) {
                 return true;
@@ -12,5 +12,10 @@ public class LetterChecker {
         } else {
             return false;
         }
+    }
+
+    public static boolean isWordCompleted() {
+
+        return false;
     }
 }
