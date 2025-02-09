@@ -8,6 +8,14 @@ import static pl.edu.agh.hangman.LetterChecker.isWordCompleted;
 
 public class GameRunner {
 
+    private Generator generator;
+    private RandomWordLoader randomWordLoader;
+
+    public GameRunner(Generator generator, RandomWordLoader randomWordLoader) {
+        this.generator = generator;
+        this.randomWordLoader = randomWordLoader;
+    }
+
     public static void main(String[] args) {
         run();
     }
@@ -19,7 +27,6 @@ public class GameRunner {
 
         if (start.equals("START") || start.equals("start")) {
 
-            String next = scanner.nextLine();
             RandomWordLoader wordLoader = new RandomWordLoader();
             String randomWordFromList = wordLoader.getRandomWordFromList();
 
@@ -28,20 +35,25 @@ public class GameRunner {
             int counter = 0;
             List<Character> characterList = new ArrayList<>();
             String[] hangmanPics = Hangman.getHangmanPics();
+            System.out.println(hangmanPics[0]);
             do {
-                    System.out.println(hangmanPics[0]);
-                    System.out.println("Provide letter:");
+                System.out.println("Provide letter:");
+                while (scanner.hasNext()) {
                     String providedLetter = scanner.nextLine();
                     char letter = providedLetter.toCharArray()[0];
                     if (LetterChecker.isLetterInWord(randomWordFromList, letter)) {
-                        generator.letterGenerate(randomWordFromList, letter);
+                        System.out.println(generator.letterGenerate(randomWordFromList, letter));
+
                         characterList.add(letter);
                     } else {
                         counter++;
                         System.out.println(hangmanPics[counter]);
                     }
-                } while (!isWordCompleted(characterList, randomWordFromList) && counter == hangmanPics.length);
+                }
 
-        } while (scanner.hasNext()) ;
+            } while (isWordCompleted(characterList, randomWordFromList) || counter == characterList.size());
+
+        }
+        while (scanner.hasNext()) ;
     }
 }

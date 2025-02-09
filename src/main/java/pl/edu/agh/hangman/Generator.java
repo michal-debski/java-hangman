@@ -9,11 +9,13 @@ public class Generator {
                 System.out.print("_");
             }
         }
+        System.out.println("\n");
     }
 
     public String replaceUnserscoreWithLetter(String s, Character character) {
         String replacedString = s.replaceAll("[A-Za-z]", "_");
         s = replacedString.replace("*", character.toString());
+
         return s;
     }
 
@@ -26,6 +28,7 @@ public class Generator {
                     s = replaceUnserscoreWithLetter(s, character);
                 }
             }
+            System.out.println(s);
             return s;
         }
         throw new RuntimeException("Word must have at least one letter");
